@@ -27,9 +27,24 @@ class MyGrid(GridLayout):
         # Add inner grid widget to outer grid
         self.add_widget(self.inner_grid)
 
-        # Button widget for submit
+        # Create submit button widget
         self.submit = Button(text="Submit", font_size=40)
+        # Bind button press to pressed method
+        self.submit.bind(on_press=self.pressed)
+        # Add submit button widget to outer grid
         self.add_widget(self.submit)
+
+    # Button action method
+    def pressed(self, instance):
+        # Capture text from input boxes
+        username = self.username.text
+        password = self.password.text
+        # Clear input boxes
+        self.username.text = ""
+        self.password.text = ""
+
+        print("Username: {}\nPassword: {}".format(username, password))
+
 
 # Inherit kivy App class
 class MyApp(App):
