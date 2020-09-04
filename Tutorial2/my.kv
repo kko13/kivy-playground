@@ -1,4 +1,12 @@
 <MyGrid>
+
+    # Global variables - Object properties
+    username: username
+    password: password
+
+    # GridLayout with 1 column
+    # ------------- GridLayout 2 columns
+    # ------------- Button
     GridLayout:
         cols:1
         size: root.width, root.height
@@ -10,14 +18,17 @@
                 text: "Username: "
 
             TextInput:
+                id: username
                 multiline: False
 
             Label:
                 text: "Password: "
 
             TextInput:
+                id: password
                 multiline: False
                 password: True
 
         Button:
             text:"Submit"
+            on_press: root.btn()
