@@ -8,20 +8,24 @@ from kivy.uix.button import Button
 # Inherit GridLayout
 class MyGrid(GridLayout):
     def __init__(self, **kwargs):
-        # Call parent constructor
         super(MyGrid, self).__init__(**kwargs)
-        # Set columns of grid
-        self.cols = 2
-        
-        # Label and InputBox widgets for Username
-        self.add_widget(Label(text="Username: "))
-        self.username = TextInput(multiline=False)
-        self.add_widget(self.username)
+        # Outer grid columns
+        self.cols = 1
 
-        # Label and InputBox widgets for Password
-        self.add_widget(Label(text="Password: "))
+        # Declare inner grid and columns
+        self.inner_grid = GridLayout()
+        self.inner_grid.cols = 2
+        # Add Username Label & Input widgets to inner grid
+        self.inner_grid.add_widget(Label(text="Username: "))
+        self.username = TextInput(multiline=False)
+        self.inner_grid.add_widget(self.username)
+        # Add Password Label & Input widgets to inner grid
+        self.inner_grid.add_widget(Label(text="Password: "))
         self.password = TextInput(multiline=False, password=True)
-        self.add_widget(self.password)
+        self.inner_grid.add_widget(self.password)
+
+        # Add inner grid widget to outer grid
+        self.add_widget(self.inner_grid)
 
         # Button widget for submit
         self.submit = Button(text="Submit", font_size=40)
