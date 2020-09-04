@@ -63,10 +63,6 @@ class PongGame(Widget):
             self.player1.score += 1
             self.serve_ball(vel=(-4, 0))
 
-        # Check for win condition
-        if self.player1.score >= 2 or self.player2.score >= 2:
-            self.add_widget(Label(text="Game Over", font_size=100, valign='middle'))
-
     # Detect input
     def on_touch_move(self, touch):
         if touch.x < self.width / 3:
