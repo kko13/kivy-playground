@@ -1,3 +1,23 @@
 <MyGrid>
-    Label:
-        text: "Hello kivy"
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "Username: "
+
+            TextInput:
+                multiline: False
+
+            Label:
+                text: "Password: "
+
+            TextInput:
+                multiline: False
+                password: True
+
+        Button:
+            text:"Submit"
