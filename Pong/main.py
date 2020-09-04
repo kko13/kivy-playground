@@ -1,5 +1,6 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
+from kivy.uix.label import Label
 from kivy.properties import (
     NumericProperty, ReferenceListProperty, ObjectProperty
 )
@@ -61,6 +62,10 @@ class PongGame(Widget):
         if self.ball.x > self.width:
             self.player1.score += 1
             self.serve_ball(vel=(-4, 0))
+
+        # Check for win condition
+        if self.player1.score >= 2 or self.player2.score >= 2:
+            self.add_widget(Label(text="Game Over", font_size=100, valign='middle'))
 
     # Detect input
     def on_touch_move(self, touch):
